@@ -303,10 +303,9 @@ class CellularConnectionManager {
             // tlsOptions = .init()
             tlsOptions = NWProtocolTLS.Options()
 
-            // Force TLS 1.2
+            // Require TLS 1.2 or newer and allow the platform to negotiate the version.
             if let secOptions = tlsOptions?.securityProtocolOptions {
                 sec_protocol_options_set_min_tls_protocol_version(secOptions, .TLSv12)
-                sec_protocol_options_set_max_tls_protocol_version(secOptions, .TLSv12)
             }
 
             tcpOptions.enableFastOpen = true //Save on tcp round trip by using first tls packet
